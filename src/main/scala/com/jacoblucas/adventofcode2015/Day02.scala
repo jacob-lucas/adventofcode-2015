@@ -1,5 +1,6 @@
 package com.jacoblucas.adventofcode2015
 
+import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
 
 object Day02 {
@@ -11,6 +12,17 @@ object Day02 {
   def paperNeeded(dim: (Int, Int, Int)): Int =
     surfaceArea(dim._1, dim._2, dim._3) + smallestSideArea(dim._1, dim._2, dim._3)
 
+  def ribbonNeeded(dim: (Int, Int, Int)): Int = {
+    val arr = ArrayBuffer(dim._1, dim._2, dim._3)
+    val min = arr.min
+    arr -= min
+    val nextMin = arr.min
+
+    val box = min + min + nextMin + nextMin
+    val bow = dim._1 * dim._2 * dim._3
+    box + bow
+  }
+
   def main(args: Array[String]): Unit = {
     val lines = Source.fromInputStream(getClass.getResourceAsStream("/day02-input.txt")).mkString.split("\n")
     val dimensions = lines.map(str => str.split("x").map(_.toInt))
@@ -20,6 +32,12 @@ object Day02 {
       .sum
 
     println(total)
+
+    val ribbon = dimensions
+      .map(d => ribbonNeeded((d(0), d(1), d(2))))
+      .sum
+
+    println(ribbon)
   }
 
 }
