@@ -6,13 +6,7 @@ object Day02 {
 
   def surfaceArea(len: Int, wid: Int, hgt: Int): Int = 2*len*wid + 2*wid*hgt + 2*hgt*len
 
-  def smallestSideArea(len: Int, wid: Int, hgt: Int): Int = {
-    val a = len * wid
-    val b = wid * hgt
-    val c = len * hgt
-
-    math.min(math.min(a, b), math.min(b, c))
-  }
+  def smallestSideArea(len: Int, wid: Int, hgt: Int): Int = Array(len * wid, wid * hgt, len * hgt).min
 
   def paperNeeded(dim: (Int, Int, Int)): Int =
     surfaceArea(dim._1, dim._2, dim._3) + smallestSideArea(dim._1, dim._2, dim._3)
