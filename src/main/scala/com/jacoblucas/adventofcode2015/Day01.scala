@@ -14,9 +14,23 @@ object Day01 {
     }
   }
 
+  @tailrec
+  def basementChar(instructions: String, floor: Int, pos: Int): Int = {
+    instructions.toList match {
+      case x :: xs =>
+        if (floor == -1) pos - 1
+        else {
+          if (x == '(') basementChar(xs.mkString, floor + 1, pos + 1)
+          else basementChar(xs.mkString, floor - 1, pos + 1)
+        }
+      case Nil => 0
+    }
+  }
+
   def main(args: Array[String]): Unit = {
     val lines = Source.fromInputStream(getClass.getResourceAsStream("/day01-input.txt")).mkString
     println(followInstructions(lines, 0))
+    println(basementChar(lines, 0, 1))
   }
 
 }
