@@ -15,8 +15,8 @@ object Day04 {
       .map("%02X".format(_))
       .mkString
 
-    println(n + " = " + md5)
-    if (md5.startsWith("00000")) n
+//    println(n + " = " + md5)
+    if (md5.startsWith("000000")) n
     else findLowestPositiveNumber(secretKey, n + 1)
   }
 
