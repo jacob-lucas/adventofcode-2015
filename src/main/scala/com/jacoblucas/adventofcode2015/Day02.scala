@@ -1,7 +1,6 @@
 package com.jacoblucas.adventofcode2015
 
 import scala.collection.mutable.ArrayBuffer
-import scala.io.Source
 
 object Day02 {
 
@@ -24,7 +23,7 @@ object Day02 {
   }
 
   def main(args: Array[String]): Unit = {
-    val lines = Source.fromInputStream(getClass.getResourceAsStream("/day02-input.txt")).mkString.split("\n")
+    val lines = Util.read("/day02-input.txt")
     val dimensions = lines.map(str => str.split("x").map(_.toInt))
 
     val total = dimensions

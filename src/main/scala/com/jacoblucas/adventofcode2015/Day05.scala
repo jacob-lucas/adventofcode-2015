@@ -1,7 +1,6 @@
 package com.jacoblucas.adventofcode2015
 
 import scala.annotation.tailrec
-import scala.io.Source
 
 object Day05 {
 
@@ -29,7 +28,7 @@ object Day05 {
   def isNiceV2(str: String): Boolean = pairAppearsTwice(str) && repeatWithOneLetterBetween(str)
 
   def main(args: Array[String]): Unit = {
-    val lines = Source.fromInputStream(getClass.getResourceAsStream("/day05-input.txt")).mkString.split("\n")
+    val lines = Util.read("/day05-input.txt")
     println(lines count isNice)
     println(lines count isNiceV2)
   }

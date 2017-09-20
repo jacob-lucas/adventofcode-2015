@@ -1,7 +1,6 @@
 package com.jacoblucas.adventofcode2015
 
 import scala.annotation.tailrec
-import scala.io.Source
 
 object Day03 {
 
@@ -38,8 +37,8 @@ object Day03 {
   }
 
   def main(args: Array[String]): Unit = {
-    val lines = Source.fromInputStream(getClass.getResourceAsStream("/day03-input.txt")).mkString
-    val result = deliver(lines.toList, presents, (0,0), (0,0), 1)
+    val lines = Util.read("/day03-input.txt").head.toList
+    val result = deliver(lines, presents, (0,0), (0,0), 1)
     println(result.size)
   }
 
