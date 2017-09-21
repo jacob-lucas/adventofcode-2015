@@ -39,9 +39,9 @@ object Day06 {
       j <- topLeft._2 to bottomRight._2
     } {
       inst.operation match {
-        case On => grid(j)(i) = 1
-        case Off => grid(j)(i) = 0
-        case Toggle => if (grid(j)(i) == 0) grid(j)(i) = 1 else grid(j)(i) = 0
+        case On => grid(j)(i) = grid(j)(i) + 1
+        case Off => grid(j)(i) = math.max(grid(j)(i) - 1, 0)
+        case Toggle => grid(j)(i) = grid(j)(i) + 2
       }
     }
   }
@@ -53,7 +53,7 @@ object Day06 {
     val grid = Array.ofDim[Int](1000, 1000)
     instructions.foreach(i => execute(i, grid))
 
-    println(grid.map(_.count(_ == 1)).sum)
+    println(grid.map(_.sum).sum)
   }
 
 }
